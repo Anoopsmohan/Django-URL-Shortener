@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Django URL Shortener</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<link rel="stylesheet" type="text/css" href="static/style.css" />
+
+<script src="/static/AJS.js" type="text/javascript"></script> 
+        <script src="/static/AJS_fx.js" type="text/javascript"></script> 
+        <script>
+            function toggle(link, id)
+            {
+                el = AJS.$(id);
+
+                if (AJS.isElementHidden(el))
+                {
+                    AJS.showElement(el);
+                    AJS.fx.fadeIn(el, {
+                        onComplete: function() {
+                            AJS.setHTML(link, 'Click to hide');
+                       
+                        }
+                    });
+                } 
+                else
+                {
+                    AJS.fx.fadeOut(el, {
+                        onComplete: function() { 
+                            AJS.hideElement(el); 
+                            AJS.setHTML(link, 'Click to expand :');
+                        } 
+                    });
+                }
+            }
+
+            {% if slug %}
+
+          
+            AJS.AEV(window, 'load', function() 
+            {
+                toggle(AJS.$('toggleSlug'), 'slug');
+            });
+            {% endif %}
+        </script>
+    
+</head>
+
+<body>
+<script type="text/javascript">var _kiq = _kiq || [];</script>
+<script type="text/javascript" src="//s3.amazonaws.com/ki.js/30824/5_J.js" async="true"></script>
+	<div id="header"><br><br>
+<h1>URL Shortener</h1><br><br><br>
+								
+<div id="container">
+
+	<div id="content">
+              	<div id="content_top"></div>
+              	<div id="content_main"><br>
+       
+              	<form method="post" action="{%url views.posted%}" align="center">
+                <div>
+		<center><font size="5" face="arial black" color="green"> Please enter the URL you want to be shortened:</font><br><br><br>
+		<textarea name="url" value="{{url}}" cols="75" rows="2" style="color: #000000; font-family: Verdana; font-size: 13px; "></textarea>
+                <input type="submit" value="Shorten"> <br/>   
+                <div id="slug" style="display: none;"><font size="3" face="arial black" color="red">
+                        Type the name of the link you wish to use:</font><br/>
+                       <font color="black" size=2> http://url-shortner.appspot.com/<input type=text name="slug" size="40" value="{{slug}}" />
+                </div>
+	        <a style="color: #461B7E; font-size: 20px; font-family: arial black" href="#" id="toggleSlug" onclick="toggle(this, 'slug');">Specify your desired URL :</a><p>
+                </div>
+            	</form>
+            <br/><center>
+            {% if ShortUrl %}
+            <strong><font color="red" size=4>Success: </font></strong></center>               
+            <font color="black" size=2>Your original link is&nbsp&nbsp&nbsp : </font> <input id="ref" type=text name="ref" value="{{ref}}" size="62" /><br><br>		
+          <font color="black" size=2>  Your shorted link is now:  <input id="short_url" type=text name="short_url" value="{{short_url}}" size="40" /> <a style="color: #800517; font-size: 15px; font-family: arial black" href="{{short_url}}" target="_blank" >Follow it</a><br/>
+            {% endif %}
+            {% if error  %}
+                <strong><font color="red" size=4>Error:</font></strong>
+                <font size=2 face="arial black" color="black">{{error}} </font><br/>
+            {% endif %}
+        </div>
+        
+</div><div align="left"><br><br>
+<font size="3" face="arial Black" color="Navy" alignment="left">What is URL Shortener?</font><br><font size="2" face="arial"color="black">
+URL Shortener is a free service for shortening web addresses and other URLs. This is useful in many circumstances e.g. when sending an address to a phone via SMS and character count is limited.<br><br>
+
+As an example you can turn:<br><br>
+
+http://maps.google.co.uk/maps?f=q&source=s_q&hl=en&geocode=&q=louth&sll=53.800651,-4.064941&sspn=33.219383,38.803711&ie=UTF8&hq=&hnear=Louth,+United+Kingdom&z=14<br>
+
+into something much shorter like:<br><br><font size="2" face="arial black"color="red">
+
+http://dj-url.appspot.com/aw34</font><br><br>
+
+You can also pick a specific meaningful shortened address if you want to, such as:<br><br><font size="2" face="arial black"color="red">
+
+http://dj-url.appspot.com/myfb</font><br><br> <font size="3" face="arial Black" color="Navy 		">How to use URL Shortener?</font><br><br>
+<font size="2" face="arial"color="black">
+Type or paste the address you want to shorten into the  box on our homepage and push the "Shorten" button. It's that simple.<br>
+
+If you want to pick a shortened URL instead of having us generate one for you, before pressing "Shorten", click on "Specify your desired URL" and type your choice in the additional box that appears.</font><br><br><font size="3" face="arial Black" color="Navy 		">Contact:</font><br><br>
+<font size="2" face="arial"color="black">Anoop.S.M, E-mail: anoopmhn2009@gmail.com, Blog:<a href="http://anoopsmohan.blogspot.com"> http://anoopsmohan.blogspot.com</a>, <a href="http://www.facebook.com/#!/profile.php?id=100000371739134"> facebook</a> 
+
+	<div id="footer">
+		<ul>
+			
+		</ul><br><br><br><br><center>
+		<font size=2>Created by Anoop.S.M, Contact: anoopmhn2009@gmail.com</font>	</center>																																																																<div class="inner_copy"><a href="http://www.greatdirectories.org/">web directories</a><a href="http://www.bestfreetemplates.info/">free CSS templates</a></div>
+		</div>
+	</div>
+</body>
+</html>
